@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Makale Web Projesi</title>
+    
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/shop-homepage.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Ana Sayfa</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-wrench"></span>Yönetim</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-star"></span>En Beğenilenler</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-list"></span>Son Yazılanlar</a>
+                    </li>
+                    <li>
+                        <a href="#"><span class="glyphicon glyphicon-info-sign"></span>Hakkımızda</a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-log-in">Giriş</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user">Üye Ol</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user">ElifCengiz</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-log-out">Çıkış</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    @RenderBody()
+    <!-- /.container -->
+
+    <div class="container">
+        <hr>
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-4">
+                    <h5><b>Site Haritası</b></h5>
+                    <hr />
+                    <p>
+                        <a href="#">Hakkımızda</a><br />
+                        <a href="#">En Beğenilenler</a><br />
+                        <a href="#">Son Yazılanlar</a>
+                    </p>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <h5><b> Makale Web Projesi</b></h5>
+                    <hr />
+                    <p>  @DateTime.Now.Year <br />Tüm hakları saklıdır &copy;</p>
+                </div>
+
+                <div class="col-lg-4 text-center">
+                    <h5><b> E-Bülten Üyeliği</b></h5>
+                    <hr />
+                    <div class="col-md-12">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="e-posta adresiniz">
+                            <span class="input-group-btn">
+                                <button class="btn btn-primary" type="button">Gönder</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+
+</body>
+
+</html>
