@@ -111,6 +111,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="image\deneme.jpg" />
     <Content Include="image\indir.jpg" />
     <Content Include="image\_sunset.jpg" />
     <Content Include="Scripts\bootstrap.js" />
@@ -138,6 +139,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery-3.6.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.1.min.map" />
+    <Content Include="Views\Shared\_PartialPageKategoriler.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
