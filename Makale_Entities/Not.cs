@@ -18,7 +18,7 @@ namespace Makale_Entities
         public string Text { get; set; }
         public bool Taslak { get; set; }
         public int BegeniSayisi { get; set; }
-        public int KategoriId { get; set; }
+        public int KategoriId { get; set; } 
 
         public virtual Kategori Kategori { get; set; }
         public virtual Kullanici Kullanici { get; set; }
