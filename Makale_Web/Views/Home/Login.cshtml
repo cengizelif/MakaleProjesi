@@ -1,0 +1,61 @@
+﻿@using Makale_Entities.ViewModel
+@model LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+<style>
+    .validation-summary-errors {
+        border: 2px dotted #808080 !important;
+        background-color: #808080;
+        border-radius: 8px;
+    }
+
+        .validation-summary-errors ul {
+            padding:1px;
+            list-style-type: none;
+            color: #ffffff;
+        }
+</style>
+<link href="~/Content/login-register.css" rel="stylesheet" />
+
+<div id="login">
+
+    <div class="container">
+        <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-12">
+                <div id="login-box" class="col-md-12">
+                    <h3 class="text-center text-info">Login</h3>
+
+                    @using (Html.BeginForm())
+                    {
+
+                        @Html.ValidationSummary(false)
+                    <br />
+                        <div class="form-group">
+
+                            @Html.TextBoxFor(model => model.KullaniciAdi, new { @class = "form-control", placeholder = "Kullanıcı Adınız" })
+                        </div>
+
+                        <div class="form-group">
+                            @Html.TextBoxFor(model => model.Sifre, new { @class = "form-control", placeholder = "Şifreniz", type = "password" })
+                        </div>
+
+                        <div class="form-group text-center">
+                            <br>
+                            <input type="submit" name="submit" class="btn btn-info btn-md" value="Giriş">
+                        </div>
+                    }
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("footer").parent().hide();
+    });
+
+</script>

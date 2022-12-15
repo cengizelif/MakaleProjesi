@@ -57,13 +57,15 @@
                                     <a href="#">@item.Baslik</a>
                                 </h4>
                                 <h6 class="text-right">
-                                    <span class="glyphicon glyphicon-user"></span>@item.Kullanici.KullaniciAdi<br />
-                                    <span class="glyphicon glyphicon-time"></span> @item.DegistirmeTarihi.ToString("dd.MM.yy HH:mm")
+                                    @item.Kullanici.KullaniciAdi<span class="glyphicon glyphicon-user"></span><br />
+                                    @item.DegistirmeTarihi.ToString("dd.MM.yy HH:mm")<span class="glyphicon glyphicon-time"></span>
                                 </h6>
                                
                                     @if (!string.IsNullOrEmpty(item.Text) && item.Text.Length > 100)
                                     {
                                  <p>  @item.Text.Substring(0, 100)
+                                </p>
+                                <p class="pull-right">
                                      <a href="#" class="btn btn-default btn-xs right"><span class="glyphicon glyphicon-chevron-right"></span>devamı</a>
                                  </p>
                                  }

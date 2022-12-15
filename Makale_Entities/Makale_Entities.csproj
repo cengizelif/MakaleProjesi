@@ -48,6 +48,8 @@
     <Compile Include="Kullanici.cs" />
     <Compile Include="Not.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\KayitModel.cs" />
+    <Compile Include="ViewModel\LoginModel.cs" />
     <Compile Include="Yorum.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
