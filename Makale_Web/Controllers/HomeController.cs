@@ -60,7 +60,7 @@ namespace Makale_Web.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
-            return View(model);
+            return View(model); 
         }
 
         public ActionResult KayitOl()
