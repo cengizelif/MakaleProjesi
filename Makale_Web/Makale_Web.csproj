@@ -144,6 +144,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\KayitOl.cshtml" />
+    <Content Include="Views\Home\UserActivate.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -159,6 +160,10 @@
     <ProjectReference Include="..\Makale_BusinessLayer\Makale_BusinessLayer.csproj">
       <Project>{5413c777-7a49-42d4-b397-c4cdd5ba5824}</Project>
       <Name>Makale_BusinessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Makale_Common\Makale_Common.csproj">
+      <Project>{7f55d8f7-7ebd-4833-99d7-151da123677e}</Project>
+      <Name>Makale_Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\Makale_Entities\Makale_Entities.csproj">
       <Project>{e991aeb9-a66f-4b06-bffb-2ed30fd32932}</Project>

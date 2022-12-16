@@ -40,7 +40,7 @@ namespace Makale_BusinessLayer
             if(kullanici != null)
             {
                 kullanici.KullaniciAdi = "test";
-                rep_kul.Update();
+                rep_kul.Update(kullanici);
             }
         }
 
