@@ -1,0 +1,26 @@
+﻿@model List<string>
+@{
+    ViewBag.Title = "Hata";
+}
+
+<h2>Hata</h2>
+
+<div class="container">
+    <div class="text-danger">
+        @foreach (var item in Model)
+        {
+            <p>
+                @item
+            </p>
+            <br />
+        }
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $("footer").parent.hide();
+        setTimeout(function () { window.location = "/Home/Index" },5000);
+    });
+</script>

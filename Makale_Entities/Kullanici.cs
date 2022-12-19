@@ -18,6 +18,9 @@ namespace Makale_Entities
         [StringLength(20)]
         public string Soyad { get; set; }
 
+        [StringLength(20)]
+        public string ProfilResim { get; set; }
+
         [Required ,StringLength(20)]
         public string KullaniciAdi { get; set; }
 

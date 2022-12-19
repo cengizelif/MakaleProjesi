@@ -114,6 +114,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="image\deneme.jpg" />
     <Content Include="image\indir.jpg" />
+    <Content Include="image\user_1.jpg" />
     <Content Include="image\_sunset.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -145,6 +146,10 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\KayitOl.cshtml" />
     <Content Include="Views\Home\UserActivate.cshtml" />
+    <Content Include="Views\Home\UserActivateHata.cshtml" />
+    <Content Include="Views\Home\KayitBasarili.cshtml" />
+    <Content Include="Views\Home\ProfilGoster.cshtml" />
+    <Content Include="Views\Home\ProfilDegistir.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
