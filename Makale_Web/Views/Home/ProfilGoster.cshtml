@@ -12,6 +12,8 @@
             <img src="~/image/@Model.ProfilResim" class="img-circle" width="100" height="100" />
         </div>
         <div class="col-md-8">
+            @Html.ValidationSummary(false)
+            <br />
             <h3>@(Model.Ad+" "+Model.Soyad)</h3>
             <br />
             <h4><b>Kullanıcı Adı:</b>@(Model.KullaniciAdi)</h4>
@@ -25,8 +27,10 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <li><a href="/Home/ProfilDegistir">Değiştir</a></li>
-                    <li><a href="/Home/ProfilSil">Sil</a></li>                  
+                    <li><a href="/Home/ProfilDegistir">
+                       <span class="glyphicon glyphicon-edit"></span> Değiştir</a></li>
+                    <li><a href="/Home/ProfilSil" onclick="return confirm('Hesabı silmek istediğinizden emin misiniz?')">
+                        <span class="glyphicon glyphicon-trash"></span>Sil</a></li>                  
                 </ul>
             </div>
         </div>

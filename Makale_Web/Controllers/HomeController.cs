@@ -1,4 +1,5 @@
 ﻿using Makale_BusinessLayer;
+using Makale_Common;
 using Makale_Entities;
 using Makale_Entities.ViewModel;
 using System;
@@ -71,6 +72,9 @@ namespace Makale_Web.Controllers
                 }
 
                 Session["login"] = sonuc.nesne; //Session da login olan kullanıcı bilgileri tutuldu.
+
+                Uygulama.kullaniciad = sonuc.nesne.KullaniciAdi;
+
                 return RedirectToAction("Index");//Login olduğu için indexe yönlendirildi.
             }
 
@@ -90,9 +94,11 @@ namespace Makale_Web.Controllers
         [HttpPost]
         public ActionResult KayitOl(KayitModel model)
         {
-            if(ModelState.IsValid)
-            {
-               
+        
+            Uygulama.kullaniciad = model.KullaniciAdi;
+           
+            if (ModelState.IsValid)
+            {               
                BusinessLayerSonuc<Kullanici> sonuc=ky.Kaydet(model);
 
                 if(sonuc.Hatalar.Count>0)
@@ -100,6 +106,7 @@ namespace Makale_Web.Controllers
                    sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
                     return View(model);
                 }
+
 
                 return RedirectToAction("KayitBasarili");
             }
@@ -151,28 +158,48 @@ namespace Makale_Web.Controllers
         }
 
         [HttpPost]
-        public ActionResult ProfilDegistir(Kullanici kullanici,HttpPostedFile profilresmi)
+        public ActionResult ProfilDegistir(Kullanici kullanici, HttpPostedFileBase profilresmi)
         {
-            if(profilresmi!=null && (profilresmi.ContentType=="image/jpeg" || profilresmi.ContentType=="image/jpg" || profilresmi.ContentType=="image/png"))
-            {
-                string dosyaadi = $"user_{kullanici.Id}.{profilresmi.ContentType.Split('/')[1]}";
-                profilresmi.SaveAs(Server.MapPath($"~/image/{dosyaadi}"));
-                kullanici.ProfilResim = dosyaadi;
-            }
+            Uygulama.kullaniciad = kullanici.KullaniciAdi;
 
-            BusinessLayerSonuc<Kullanici> sonuc=ky.KullaniciUpdate(kullanici);
-            if(sonuc.Hatalar.Count>0)
+            ModelState.Remove("DegistirenKullanici");
+
+            if (ModelState.IsValid)
             {
-                sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
-                return View(sonuc.nesne);
-            }
+                if (profilresmi != null && (profilresmi.ContentType == "image/jpeg" || profilresmi.ContentType == "image/jpg" || profilresmi.ContentType == "image/png"))
+                {
+                    string dosyaadi = $"user_{kullanici.Id}.{profilresmi.ContentType.Split('/')[1]}";
+                    profilresmi.SaveAs(Server.MapPath($"~/image/{dosyaadi}"));
+                    kullanici.ProfilResim = dosyaadi;
+                }
+
+                BusinessLayerSonuc<Kullanici> sonuc = ky.KullaniciUpdate(kullanici);
+                if (sonuc.Hatalar.Count > 0)
+                {
+                    sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
+                    return View(sonuc.nesne);
+                }
+                return RedirectToAction("ProfilGoster");
+            }             
 
             return View(kullanici);
         }
 
         public ActionResult ProfilSil()
         {
-            return View();
+            Kullanici kullanici = Session["login"] as Kullanici;
+
+            BusinessLayerSonuc<Kullanici> sonuc = ky.KullaniciSil(kullanici.Id);
+
+            if(sonuc.Hatalar.Count > 0)
+            {
+                //Hatalar ekranda gösterilir. Profilsil ekranı oluşturabilirsiniz.
+                sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
+                return RedirectToAction("ProfilGoster",sonuc.nesne);
+            }
+
+            Session.Clear();
+            return RedirectToAction("Index");
         }
 
     }

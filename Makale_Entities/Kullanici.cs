@@ -21,13 +21,13 @@ namespace Makale_Entities
         [StringLength(20)]
         public string ProfilResim { get; set; }
 
-        [Required ,StringLength(20)]
+        [DisplayName("Kullanıcı Adı"),Required,StringLength(20)]
         public string KullaniciAdi { get; set; }
 
-        [Required, StringLength(50)]
+        [DisplayName("E-posta"),Required, StringLength(50)]
         public string Email { get; set; }
 
-        [Required, StringLength(20)]
+        [DisplayName("Şifre"),Required,StringLength(20)]
         public string Sifre { get; set; }
         public bool Aktif { get; set; }
         public bool Admin { get; set; }

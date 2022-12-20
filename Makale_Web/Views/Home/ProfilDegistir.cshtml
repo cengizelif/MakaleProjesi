@@ -15,13 +15,21 @@
         {
             <div class="col-md-3">
                 <img src="~/image/@Model.ProfilResim" class="img-circle" width="100" height="100" />
+                @Html.HiddenFor(model=>model.ProfilResim)
                 <br />
                 <input type="file" name="profilresmi" id="profilresmi" class="form-control" />
             </div>
             <div class="col-md-9">
-
-
-                @Html.ValidationSummary(false)
+                <div class="form-group">
+                    <div class="col-md-12 ">
+                        @Html.ValidationSummary(false)
+                    </div>
+                    <div class="col-md-12 ">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                </div>
+           
+                @Html.HiddenFor(model=>model.Id)
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Ad, new { @class = "control-label col-md-2" })
@@ -54,7 +62,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Sifre, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Sifre, new { @class = "form-control" })
+                        @Html.EditorFor(model => model.Sifre, new { @class = "form-control" ,type="password" })
                     </div>
                 </div>
 

@@ -61,3 +61,15 @@ footer {
     margin: 50px 0;
 }
 
+.validation-summary-errors {
+    border: 2px dotted #808080 !important;
+    background-color: #808080;
+    border-radius: 8px;
+    margin-bottom:8px;
+}
+
+.validation-summary-errors ul {
+        padding: 1px;
+        list-style-type: none;
+        color: #ffffff;
+}

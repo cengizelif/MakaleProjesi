@@ -20,5 +20,20 @@ namespace Makale_BusinessLayer
         {
             return rep_kat.Find(x => x.Id == id);
         }
+
+        public void KategoriEkle(Kategori kategori)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void KategoriUpdate(Kategori kategori)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void KategoriSil(Kategori kategori)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

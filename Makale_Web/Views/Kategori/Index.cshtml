@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Makale_Entities.Kategori>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Kategoriler</h2>
+        <hr />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <p>           
+            <a href="/Kategori/Create" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Yeni Kayıt</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Baslik)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aciklama)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KayitTarih)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirmeTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirenKullanici)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Baslik)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aciklama)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KayitTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirmeTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirenKullanici)
+                    </td>
+                    <td>
+                        <a href="/Kategori/Edit/@item.Id" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-edit"></span></a>
+                        
+                        <a href="/Kategori/Details/@item.Id" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-search"></span></a>
+                        
+                        <a href="/Kategori/Delete/@item.Id" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-trash"></span></a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+</div>
+
+
+
+
