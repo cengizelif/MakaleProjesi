@@ -166,6 +166,7 @@ namespace Makale_Web.Controllers
 
             if (ModelState.IsValid)
             {
+              
                 if (profilresmi != null && (profilresmi.ContentType == "image/jpeg" || profilresmi.ContentType == "image/jpg" || profilresmi.ContentType == "image/png"))
                 {
                     string dosyaadi = $"user_{kullanici.Id}.{profilresmi.ContentType.Split('/')[1]}";
@@ -174,6 +175,7 @@ namespace Makale_Web.Controllers
                 }
 
                 BusinessLayerSonuc<Kullanici> sonuc = ky.KullaniciUpdate(kullanici);
+
                 if (sonuc.Hatalar.Count > 0)
                 {
                     sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));

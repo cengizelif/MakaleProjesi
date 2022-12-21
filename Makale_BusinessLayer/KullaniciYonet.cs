@@ -16,6 +16,11 @@ namespace Makale_BusinessLayer
     {
         Repository<Kullanici> rep_kul = new Repository<Kullanici>();
 
+        public List<Kullanici> Listele()
+        {
+            return rep_kul.Liste();
+        }
+
         public BusinessLayerSonuc<Kullanici> ActivateUser(Guid id)
         {
             BusinessLayerSonuc<Kullanici> sonuc = new BusinessLayerSonuc<Kullanici>();
@@ -112,18 +117,25 @@ namespace Makale_BusinessLayer
         {
             BusinessLayerSonuc<Kullanici> sonuc = new BusinessLayerSonuc<Kullanici>();
 
-            Kullanici k = rep_kul.Find(x => x.KullaniciAdi == kullanici.KullaniciAdi || x.Email == kullanici.Email);
+            Kullanici k1 = rep_kul.Find(x => x.KullaniciAdi == kullanici.KullaniciAdi);
 
-            if(k!=null && k.Id!=kullanici.Id)
+            Kullanici k2 = rep_kul.Find(x => x.Email == kullanici.Email);
+
+            if(k1 != null && k1.Id != kullanici.Id)
             {
-                if (k.KullaniciAdi == kullanici.KullaniciAdi)
-                {
-                    sonuc.Hatalar.Add("Kullanıcı adı sistemde kayıtlı");
-                }
-                if (k.Email == kullanici.Email)
-                {
-                    sonuc.Hatalar.Add("Email sistemde kayıtlı");
-                }
+                //if (k1.KullaniciAdi == kullanici.KullaniciAdi)               
+                    sonuc.Hatalar.Add("Kullanıcı adı sistemde kayıtlı");             
+            }
+
+            if (k2 != null && k2.Id != kullanici.Id)
+            {
+               // if (k2.Email == kullanici.Email)                
+                    sonuc.Hatalar.Add("Email sistemde kayıtlı");                
+            }
+
+            if(sonuc.Hatalar.Count>0)
+            {
+                sonuc.nesne = kullanici;
                 return sonuc;
             }
 
@@ -161,6 +173,16 @@ namespace Makale_BusinessLayer
                 sonuc.Hatalar.Add("Kullanıcı bulunamadı");
             }
             return sonuc;
+        }
+
+        public Kullanici KullanciBul(int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void KullaniciKaydet(Kullanici kullanici)
+        {
+            throw new NotImplementedException();
         }
     }
 }

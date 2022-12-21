@@ -18,7 +18,7 @@ namespace Makale_Entities
         [StringLength(20)]
         public string Soyad { get; set; }
 
-        [StringLength(20)]
+        [StringLength(20),ScaffoldColumn(false)]
         public string ProfilResim { get; set; }
 
         [DisplayName("Kullanıcı Adı"),Required,StringLength(20)]
@@ -32,7 +32,7 @@ namespace Makale_Entities
         public bool Aktif { get; set; }
         public bool Admin { get; set; }
 
-        [Required]
+        [Required,ScaffoldColumn(false)]
         public Guid AktifGuid { get; set; }
         public virtual List<Not> Notlar { get; set; }
         public virtual List<Yorum> Yorumlar { get; set; }

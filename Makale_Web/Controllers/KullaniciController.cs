@@ -9,33 +9,35 @@ using System.Web.Mvc;
 using Makale_BusinessLayer;
 using Makale_Entities;
 
-
 namespace Makale_Web.Controllers
 {
-    public class KategoriController : Controller
+    public class KullaniciController : Controller
     {
+        KullaniciYonet ky = new KullaniciYonet();
 
-        KategoriYonet ky = new KategoriYonet();
-
+        // GET: Kullanici
         public ActionResult Index()
         {
             return View(ky.Listele());
         }
 
+        // GET: Kullanici/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kategori kategori = ky.KategoriBul(id.Value);
-            if (kategori == null)
+            Kullanici kullanici = ky.KullanciBul(id.Value);
+           
+            if (kullanici == null)
             {
                 return HttpNotFound();
             }
-            return View(kategori);
+            return View(kullanici);
         }
 
+        // GET: Kullanici/Create
         public ActionResult Create()
         {
             return View();
@@ -43,91 +45,71 @@ namespace Makale_Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Kategori kategori)
+        public ActionResult Create(Kullanici kullanici)
         {
-            ModelState.Remove("DegistirenKullanici");
-
             if (ModelState.IsValid)
             {
-                BusinessLayerSonuc<Kategori> sonuc = ky.KategoriEkle(kategori);
-
-                if (sonuc.Hatalar.Count > 0)
-                {
-                    sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
-                    return View(kategori);
-                }                         
+                ky.KullaniciKaydet(kullanici);
 
                 return RedirectToAction("Index");
             }
 
-            return View(kategori);
+            return View(kullanici);
         }
 
+        // GET: Kullanici/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kategori kategori = ky.KategoriBul(id.Value);
-            if (kategori == null)
+            Kullanici kullanici = ky.KullanciBul(id.Value);
+            if (kullanici == null)
             {
                 return HttpNotFound();
             }
-            return View(kategori);
+            return View(kullanici);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Kategori kategori)
+        public ActionResult Edit(Kullanici kullanici)
         {
-            ModelState.Remove("DegistirenKullanici");
-
             if (ModelState.IsValid)
             {
-                BusinessLayerSonuc<Kategori> sonuc = ky.KategoriUpdate(kategori);
-
-                if (sonuc.Hatalar.Count > 0)
-                {
-                    sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
-                    return View(kategori);
-                }              
+                ky.KullaniciUpdate(kullanici);
 
                 return RedirectToAction("Index");
             }
-            return View(kategori);
+            return View(kullanici);
         }
 
+        // GET: Kullanici/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Kategori kategori = ky.KategoriBul(id.Value);
-            if (kategori == null)
+            Kullanici kullanici = ky.KullanciBul(id.Value);
+            if (kullanici == null)
             {
                 return HttpNotFound();
             }
-            return View(kategori);
+            return View(kullanici);
         }
 
+        // POST: Kullanici/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Kategori kategori = ky.KategoriBul(id);
-           
-            BusinessLayerSonuc<Kategori> sonuc=ky.KategoriSil(kategori);
-
-            if (sonuc.Hatalar.Count > 0)
-            {               
-                sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
-                return View(sonuc.nesne);
-            }
+            ky.KullaniciSil(id);
 
             return RedirectToAction("Index");
         }
 
+        
     }
 }

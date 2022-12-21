@@ -20,5 +20,13 @@ namespace Makale_DataAccessLayer
         {
             Database.SetInitializer(new VeritabaniOlusturucu());
         }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //FluentApi
+            modelBuilder.Entity<Not>().HasMany(n => n.Yorumlar).WithRequired(y => y.Not).WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Not>().HasMany(n => n.Begeniler).WithRequired(b => b.Not).WillCascadeOnDelete(true);
+        }
     }
 }
