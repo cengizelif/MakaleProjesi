@@ -21,5 +21,25 @@ namespace Makale_BusinessLayer
         {
             return rep_not.ListeQueryable();
         }
+
+        public Not NotBul(int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NotKaydet(Not not)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NotSil(Not not)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void NotUpdate(Not not)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

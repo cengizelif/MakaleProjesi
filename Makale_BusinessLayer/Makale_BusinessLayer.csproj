@@ -54,6 +54,7 @@
     <Compile Include="BusinessLayerSonuc.cs" />
     <Compile Include="KategoriYonet.cs" />
     <Compile Include="KullaniciYonet.cs" />
+    <Compile Include="LikeYonet.cs" />
     <Compile Include="NotYonet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Test.cs" />

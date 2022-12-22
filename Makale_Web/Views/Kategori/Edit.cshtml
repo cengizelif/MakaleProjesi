@@ -38,8 +38,8 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Kaydet" class="btn btn-success"/>
-                        <a href="/Kategori/Index" class="btn btn-warning">Listeye Dön</a>
+                        @BootstrapHelper.Button("submit", "Kaydet", "success", "", "floppy-disk")
+                        @BootstrapHelper.Linkbuton("/Kategori/Index", "warning", string.Empty, "", "Listeye Dön")
                     </div>
                 </div>
             </div>

@@ -1,0 +1,88 @@
+﻿@model Makale_Entities.Not
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Not</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Kategori.Baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kategori.Baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Baslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Text)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Text)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Taslak)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Taslak)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BegeniSayisi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BegeniSayisi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KayitTarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KayitTarih)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegistirmeTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegistirmeTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DegistirenKullanici)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DegistirenKullanici)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
