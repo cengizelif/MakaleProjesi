@@ -107,7 +107,6 @@ namespace Makale_Web.Controllers
                     return View(model);
                 }
 
-
                 return RedirectToAction("KayitBasarili");
             }
 

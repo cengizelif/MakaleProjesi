@@ -89,11 +89,11 @@ namespace Makale_BusinessLayer
 
                 int silsonuc = rep_kat.Delete(sonuc.nesne);//kategori siliniyor
                 if (silsonuc < 1)
-                    sonuc.Hatalar.Add("Kullanıcı silinemedi.");
+                    sonuc.Hatalar.Add("Kategori silinemedi.");
             }
             else
             {
-                sonuc.Hatalar.Add("Kullanıcı bulunamadı");
+                sonuc.Hatalar.Add("Kategori bulunamadı");
             }
             return sonuc;
         }

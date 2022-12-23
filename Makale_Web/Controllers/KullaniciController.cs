@@ -47,12 +47,19 @@ namespace Makale_Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(Kullanici kullanici)
         {
+            ModelState.Remove("DegistirenKullanici");
+
             if (ModelState.IsValid)
             {
-                ky.KullaniciKaydet(kullanici);
+                BusinessLayerSonuc<Kullanici> sonuc = ky.KullaniciKaydet(kullanici); 
+                if (sonuc.Hatalar.Count > 0)
+                {
+                    sonuc.Hatalar.ForEach(x => ModelState.AddModelError("", x));
+                    return View(kullanici);
+                }
 
                 return RedirectToAction("Index");
-            }
+            }          
 
             return View(kullanici);
         }
