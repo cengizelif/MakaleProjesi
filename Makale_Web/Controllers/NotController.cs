@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Makale_BusinessLayer;
 using Makale_Entities;
-
+using Makale_Web.Models;
 
 namespace Makale_Web.Controllers
 {
@@ -60,7 +60,7 @@ namespace Makale_Web.Controllers
         KategoriYonet ky = new KategoriYonet();
         public ActionResult Create()
         {            
-            ViewBag.KategoriId = new SelectList(ky.Listele(), "Id", "Baslik");
+            ViewBag.KategoriId = new SelectList(CacheHelper.Kategoriler(), "Id", "Baslik");
             return View();
         }
       
@@ -77,7 +77,7 @@ namespace Makale_Web.Controllers
 
             not.Kullanici = kullanici;
 
-            ViewBag.KategoriId = new SelectList(ky.Listele(), "Id", "Baslik", not.KategoriId);
+            ViewBag.KategoriId = new SelectList(CacheHelper.Kategoriler(), "Id", "Baslik", not.KategoriId);
 
             ModelState.Remove("DegistirenKullanici");
 
@@ -107,7 +107,7 @@ namespace Makale_Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.KategoriId = new SelectList(ky.Listele(), "Id", "Baslik", not.KategoriId);
+            ViewBag.KategoriId = new SelectList(CacheHelper.Kategoriler(), "Id", "Baslik", not.KategoriId);
             return View(not);
         }
 
@@ -115,7 +115,7 @@ namespace Makale_Web.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Not not)
         {
-            ViewBag.KategoriId = new SelectList(ky.Listele(), "Id", "Baslik", not.KategoriId);
+            ViewBag.KategoriId = new SelectList(CacheHelper.Kategoriler(), "Id", "Baslik", not.KategoriId);
 
             ModelState.Remove("DegistirenKullanici");
 

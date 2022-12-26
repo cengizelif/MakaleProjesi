@@ -4,79 +4,88 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Not</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Kategori.Baslik)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Kategori.Baslik)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Baslik)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Baslik)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Text)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Text)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Taslak)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Taslak)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BegeniSayisi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BegeniSayisi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KayitTarih)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KayitTarih)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DegistirmeTarihi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DegistirmeTarihi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DegistirenKullanici)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DegistirenKullanici)
-        </dd>
-
-    </dl>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Makale Düzenle</h2>
+        <hr />
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Kategori.Baslik)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Kategori.Baslik)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Baslik)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Taslak)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Taslak)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BegeniSayisi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BegeniSayisi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KayitTarih)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KayitTarih)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DegistirmeTarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DegistirmeTarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DegistirenKullanici)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DegistirenKullanici)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-md-10 col-md-offset-1">
+        <p>
+            @BootstrapHelper.Button("submit", "Kaydet", "success", "", "flopy-disk")
+            @BootstrapHelper.Linkbuton("/Not/Index", "warning", string.Empty, "", "Listeye Dön")
+        </p>
+    </div>
+
+</div>
+ 

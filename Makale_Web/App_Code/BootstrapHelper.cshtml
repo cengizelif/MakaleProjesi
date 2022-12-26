@@ -8,10 +8,31 @@
     <a href="@url" class="btn btn-@color @css"><span class="glyphicon glyphicon-@icon"></span>@text</a>
 }
 
-@helper Button(string typ="button",string text="",string color="",string css="",string icon="")
+@helper Button(string typ = "button", string text = "", string color = "", string css = "", string icon = "")
 {
     <button type="@typ" class="btn btn-@color @css">
-    <span class="glyphicon glyphicon-@icon"></span>
+        <span class="glyphicon glyphicon-@icon"></span>
         @text
     </button>
+}
+@helper ModalPoppup(string id,string title)
+{
+    <div class="modal fade" id="@id" name="@id" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" id="@(id+"_header")">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">@title</h4>
+                </div>
+                <div class="modal-body" id="@(id+"_body")">
+                    
+
+                </div>
+                <div class="modal-footer" id="@(id+"_footer")">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Kapat</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 }

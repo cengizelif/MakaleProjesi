@@ -44,13 +44,17 @@
                     @Html.AntiForgeryToken()
 
                     @*<div class="form-actions no-color">*@
-                    <div class="col-md-10 col-md-offset-2">
-                        <input type="submit" value="Sil" class="btn btn-danger" />
-                        <a href="/Kategori/Index" class="btn btn-warning">Listeye Dön</a>
-                    </div>
-                    @*</div>*@
-                }
+                <div class="col-md-10 col-md-offset-2">
+                    @BootstrapHelper.Button("submit", "Sil", "danger", "", "trash")
+                    @BootstrapHelper.Linkbuton("/Kategori/Index", "warning", string.Empty, "", "Listeye Dön")
                 </div>
+                    @*</div>*@
+
+
+                  
+
+                }
+            </div>
             </div>
 
         </div>

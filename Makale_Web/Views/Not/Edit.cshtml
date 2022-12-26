@@ -4,56 +4,65 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Not</h4>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Makale Değiştir</h2>
         <hr />
-        @Html.ValidationSummary(false)
-        @Html.HiddenFor(model => model.Id)
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Baslik, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Baslik, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
+            <div class="form-horizontal">
+                <h4>Not</h4>
+                <hr />
+                @Html.ValidationSummary(false)
+                @Html.HiddenFor(model => model.Id)
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
-            </div>
-        </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Baslik, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Baslik, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Taslak, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Taslak)
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Text, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Text, new { htmlAttributes = new { @class = "form-control" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Taslak, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.Taslak)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KategoriId, "Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownList("KategoriId", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        @BootstrapHelper.Button("submit", "Kaydet", "success", "", "flopy-disk")
+                        @BootstrapHelper.Linkbuton("/Not/Index", "warning", string.Empty, "", "Listeye Dön")
+                    </div>
                 </div>
             </div>
-        </div>
+        }
 
-       <div class="form-group">
-            @Html.LabelFor(model => model.KategoriId, "Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("KategoriId", null, htmlAttributes: new { @class = "form-control" })
-            </div>
-        </div>      
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">             
-                @BootstrapHelper.Button("submit","Kaydet","success","","flopy-disk")
-            </div>
-        </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+
