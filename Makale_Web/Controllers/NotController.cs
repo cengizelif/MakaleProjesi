@@ -28,10 +28,9 @@ namespace Makale_Web.Controllers
             return View(nots.ToList());           
         }
 
+        LikeYonet ly = new LikeYonet();
         public ActionResult Begendiklerim()
-        {
-            LikeYonet ly = new LikeYonet();
-
+        {         
             var nots = ny.ListeleQueryable().Include(n => n.Kategori);
             if (Session["login"] != null)
             {
@@ -162,6 +161,21 @@ namespace Makale_Web.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult GetLikes(int[] id_dizi)
+        {
+            List<int> likenot = new List<int>();
+
+            Kullanici kullanici = (Kullanici)Session["login"];
+
+            if (kullanici!=null)
+              likenot = ly.Listele(x => x.Kullanici.Id == kullanici.Id && id_dizi.Contains(x.Not.Id)).Select(x=>x.Not.Id).ToList();
+
+            //select not_id from begeni where kullanici_id=2 and not_id in (1,5,8,9,6)
+
+            return Json(new { sonuc = likenot });
         }
 
     }

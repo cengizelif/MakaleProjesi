@@ -132,6 +132,8 @@
     <Content Include="Scripts\jquery-3.6.1.min.js" />
     <Content Include="Scripts\jquery-3.6.1.slim.js" />
     <Content Include="Scripts\jquery-3.6.1.slim.min.js" />
+    <Content Include="Scripts\ScriptLike.js" />
+    <Content Include="Scripts\ScriptYorumlar.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

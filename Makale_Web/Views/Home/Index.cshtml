@@ -9,7 +9,7 @@
     <div class="row">
 
         <div class="col-md-3">
-           @Html.Partial("_PartialPageKategoriler")
+            @Html.Partial("_PartialPageKategoriler")
         </div>
 
         <div class="col-md-9">
@@ -25,7 +25,7 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="item active">
-                                <img class="slide-image" src="~/image/_sunset.jpg"  alt="">
+                                <img class="slide-image" src="~/image/_sunset.jpg" alt="">
                             </div>
                             <div class="item">
                                 <img class="slide-image" src="~/image/indir.jpg" alt="">
@@ -49,7 +49,7 @@
 
                 @foreach (var item in Model)
                 {
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-sm-4 col-lg-4 col-md-4" data-notid="@item.Id">
                         <div class="thumbnail">
                             <img src="~/image/deneme.jpg" alt="">
                             <div class="caption">
@@ -60,33 +60,36 @@
                                     @item.Kullanici.KullaniciAdi<span class="glyphicon glyphicon-user"></span><br />
                                     @item.DegistirmeTarihi.ToString("dd.MM.yy HH:mm")<span class="glyphicon glyphicon-time"></span>
                                 </h6>
-                               
-                                    @if (!string.IsNullOrEmpty(item.Text) && item.Text.Length > 100)
-                                    {
-                                 <p>  @item.Text.Substring(0, 100)
-                                </p>
-                                <p class="pull-right">
-                                     <a href="#" class="btn btn-default btn-xs right"><span class="glyphicon glyphicon-chevron-right"></span>devamı</a>
-                                 </p>
-                                 }
-                                    else
-                                    {
-                                     <p> @item.Text</p>
-                                    }
-                                
+
+                                @if (!string.IsNullOrEmpty(item.Text) && item.Text.Length > 100)
+                                {
+                                    <p>
+                                        @item.Text.Substring(0, 100)
+                                    </p>
+                                    <p class="pull-right">
+                                        <a href="#" class="btn btn-default btn-xs right"><span class="glyphicon glyphicon-chevron-right"></span>devamı</a>
+                                    </p>
+                                }
+                                else
+                                {
+                                    <p> @item.Text</p>
+                                }
+
                             </div>
                             <div>
                                 <hr />
                             </div>
                             <div class="ratings">
                                 <p class="pull-right">
-                                    <button class="btn btn-default btn-xs" 
-                                    data-toggle="modal" data-target="#modal1" data-notid="@item.Id">
-                                    <span class="glyphicon glyphicon-comment text-danger"></span>Yorumlar </button>
+                                    <button class="btn btn-default btn-xs"
+                                            data-toggle="modal" data-target="#modal1" data-notid="@item.Id">
+                                        <span class="glyphicon glyphicon-comment text-danger"></span>Yorumlar
+                                    </button>
                                 </p>
                                 <p>
-                                    <button class="btn btn-default btn-xs text-danger">
-                                        <span class="glyphicon glyphicon-heart text-danger"></span>@item.BegeniSayisi
+                                    <button type="button" class="btn btn-default btn-xs text-danger" data-notid="@item.Id" data-like="false">
+                                        <span class="glyphicon glyphicon-heart-empty text-danger like-kalp"></span>
+                                        <span class="begenisayisi">@item.BegeniSayisi</span>
                                     </button>
                                 </p>
                             </div>
@@ -106,114 +109,13 @@
 </div>
 
 @section footer{
-    
+
     @Html.Partial("_PartialPageFooter")
 
-    }
+}
 
 
-@BootstrapHelper.ModalPoppup("modal1","Yorumlar")
+@BootstrapHelper.ModalPoppup("modal1", "Yorumlar")
 
-<script>
-
-    var notid = -1;
-
-    $(function () {
-        $('#modal1').on('show.bs.modal', function (e) {
-
-            var button = $(e.relatedTarget);
-            notid = button.data("notid");
-
-            $('#modal1_body').load("/Yorum/YorumGoster/"+notid);
-
-        });
-    });
-
-    function yorumislem(btn,islem, yorumid, yorumtext)
-    {
-        var button = $(btn);
-        var editmod = button.data("edit");
-
-        if (islem === "update") {
-            if (!editmod) {
-                button.data("edit", true);
-                button.removeClass("btn-warning");
-                button.addClass("btn-success");
-                var span = button.find("span");
-                span.removeClass("glyphicon-edit");
-                span.addClass("glyphicon-ok");
-
-                $(yorumtext).attr("contenteditable", true);
-                $(yorumtext).focus();
-
-            }
-            else {
-                button.data("edit", false);
-                button.removeClass("btn-success");
-                button.addClass("btn-warning");
-                var span = button.find("span");
-                span.removeClass("glyphicon-ok");
-                span.addClass("glyphicon-edit");
-
-                $(yorumtext).attr("contenteditable", false);
-
-                var yenitext = $(yorumtext).text();
-
-                $.ajax({
-                    method: "POST",
-                    url: "/Yorum/Edit/" + yorumid,
-                    data: { text: yenitext }
-                }).done(function (data) {
-                    if (data.sonuc)
-                        //yorumlar yeniden yüklenir
-                        $('#modal1_body').load("/Yorum/YorumGoster/" + notid);
-                    else
-                        alert("Yorum güncellenemedi");
-
-                }).fail(function () {
-                    alert("Sunucu ile bağlantı kurulamadı.");
-                })
-
-            }
-
-        }
-        else if (islem === "delete") {
-            var mesaj = confirm("Yorum silinsin mi?");
-            if (!mesaj)
-                return false;
-
-            $.ajax({
-                method: "GET",
-                url: "/Yorum/Delete/" + yorumid
-            }).done(function (data) {
-                if (data.sonuc)
-                    //yorumlar yeniden yüklenir
-                    $('#modal1_body').load("/Yorum/YorumGoster/" + notid);
-                else
-                    alert("Yorum silinemedi");
-            }).fail(function () {
-                alert("Sunucu ile bağlantı kurulamadı.");
-            });
-
-        }
-        else if (islem === "create")
-        {
-            var yorum = $("#yorum_text").val();
-
-            $.ajax({
-                method: "Post",
-                url: "/Yorum/Create",
-                data: { Text: yorum, notid: notid }
-            }).done(function (data) {
-                if (data.sonuc)
-                    //yorumlar yeniden yüklenir
-                    $('#modal1_body').load("/Yorum/YorumGoster/" + notid);
-                else
-                    alert("Yorum eklenemedi");
-            }).fail(function () {
-                alert("Sunucu ile bağlantı kurulamadı.");
-            });
-        }
-
-    }
-</script>
+<script src="~/Scripts/ScriptYorumlar.js"></script>
+<script src="~/Scripts/ScriptLike.js"></script>
