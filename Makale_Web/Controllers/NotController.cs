@@ -178,5 +178,49 @@ namespace Makale_Web.Controllers
             return Json(new { sonuc = likenot });
         }
 
+        public ActionResult SetLike(int notid,bool like)
+        {
+            int sonuc = 0;
+            Kullanici kullanici = (Kullanici)Session["login"];
+
+            Not not=ny.NotBul(notid);
+            Begeni begen = ly.BegeniBul(notid,kullanici.Id);
+
+            if(begen!=null && like==false)
+            {
+               sonuc=ly.BegeniSil(begen);
+            }
+            else if(begen==null && like==true)
+            {
+               sonuc=ly.BegeniEkle(new Begeni()
+                {
+                    Kullanici = kullanici,
+                    Not = not
+                });
+            }
+
+            if(sonuc>0)
+            {
+                if(like)
+                {
+                    not.BegeniSayisi++;
+                }
+                else
+                {
+                    not.BegeniSayisi--;
+                }
+
+                BusinessLayerSonuc<Not> notupdate=ny.NotUpdate(not);
+             
+                if (notupdate.Hatalar.Count == 0)
+                {
+                    return Json(new { hata = false,res= not.BegeniSayisi });
+                }               
+            }
+
+            return Json(new { hata = true,res= not.BegeniSayisi });
+
+        }
+
     }
 }

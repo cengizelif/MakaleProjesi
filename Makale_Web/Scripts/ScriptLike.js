@@ -1,7 +1,6 @@
 ﻿/// <reference path="jquery-3.6.1.min.js" />
 
 $(function () {
-
     var notid_dizi = [];
 
     $("div[data-notid]").each(function (i, e) {
@@ -31,6 +30,48 @@ $(function () {
         }
 
     }).fail(function () {
+
+    });
+
+    $("button[data-like]").click(function () {
+        var btn = $(this);
+        var like = btn.data("like");
+        var notid = btn.data("notid");
+        var spankalp = btn.find("span.like-kalp");
+        var spansayi = btn.find("span.begenisayisi");
+
+        $.ajax({
+            method: "POST",
+            url: "/Not/SetLike",
+            data: { notid: notid, like: !like }
+        }).done(function (data) {
+
+            if (data.hata) {
+                alert("Beğeni işlemi gerçekleşmedi")
+            }
+            else
+            {
+                like = !like;
+                btn.data("like", like);
+                spansayi.text(data.res);
+
+                spankalp.removeClass("glyphicon-heart-empty");
+                spankalp.removeClass("glyphicon-heart");
+
+                if (like)
+                {
+                    spankalp.addClass("glyphicon-heart");
+                }
+                else
+                {
+                    spankalp.addClass("glyphicon-heart-empty");
+                }
+
+            }
+
+        }).fail(function () {
+            alert("Sunucu ile bağlantı kurulamadı");
+        });
 
     });
 

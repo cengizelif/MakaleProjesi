@@ -21,5 +21,19 @@ namespace Makale_BusinessLayer
         {
             return rep_like.Liste(kosul);
         }
+
+        public Begeni BegeniBul(int notid,int kullaniciId)
+        {
+            return rep_like.Find(x => x.Not.Id == notid && x.Kullanici.Id == kullaniciId);
+        }
+
+        public int BegeniEkle(Begeni begen)
+        {
+            return rep_like.Insert(begen);
+        }
+        public int BegeniSil(Begeni begen)
+        {
+            return rep_like.Delete(begen);
+        }
     }
 }
