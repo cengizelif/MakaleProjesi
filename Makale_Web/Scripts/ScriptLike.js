@@ -39,15 +39,18 @@ $(function () {
         var notid = btn.data("notid");
         var spankalp = btn.find("span.like-kalp");
         var spansayi = btn.find("span.begenisayisi");
-
+     
         $.ajax({
             method: "POST",
             url: "/Not/SetLike",
             data: { notid: notid, like: !like }
         }).done(function (data) {
-
             if (data.hata) {
-                alert("Beğeni işlemi gerçekleşmedi")
+                if (data.res == -1)
+                {
+                    window.location.href = '/Home/Login/';                    
+                }                   
+                alert("Beğeni işlemi gerçekleşmedi");                
             }
             else
             {

@@ -8,9 +8,12 @@ using System.Web;
 using System.Web.Mvc;
 using Makale_BusinessLayer;
 using Makale_Entities;
+using Makale_Web.Filters;
 
 namespace Makale_Web.Controllers
 {
+    [Auth]
+    [AuthAdmincs]
     public class KullaniciController : Controller
     {
         KullaniciYonet ky = new KullaniciYonet();

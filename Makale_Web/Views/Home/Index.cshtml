@@ -54,7 +54,7 @@
                             <img src="~/image/deneme.jpg" alt="">
                             <div class="caption">
                                 <h4>
-                                    <a href="#">@item.Baslik</a>
+                                    <a href="#" data-toggle="modal" data-target="#modal2" data-notid="@item.Id">@item.Baslik</a>
                                 </h4>
                                 <h6 class="text-right">
                                     @item.Kullanici.KullaniciAdi<span class="glyphicon glyphicon-user"></span><br />
@@ -67,7 +67,7 @@
                                         @item.Text.Substring(0, 100)
                                     </p>
                                     <p class="pull-right">
-                                        <a href="#" class="btn btn-default btn-xs right"><span class="glyphicon glyphicon-chevron-right"></span>devamı</a>
+                                        <a href="#" class="btn btn-default btn-xs right" data-toggle="modal" data-target="#modal2" data-notid="@item.Id"><span class="glyphicon glyphicon-chevron-right"></span>devamı</a>
                                     </p>
                                 }
                                 else
@@ -116,6 +116,22 @@
 
 
 @BootstrapHelper.ModalPoppup("modal1", "Yorumlar")
+@BootstrapHelper.ModalPoppup("modal2", "Makale Detay")
 
 <script src="~/Scripts/ScriptYorumlar.js"></script>
 <script src="~/Scripts/ScriptLike.js"></script>
+
+<script>
+    var notid = -1;
+
+    $(function () {
+        $('#modal2').on('show.bs.modal', function (e) {
+
+            var button = $(e.relatedTarget);
+            notid = button.data("notid");
+
+            $('#modal2_body').load("/Not/NotDetay/" + notid);
+
+        });
+    });
+</script>

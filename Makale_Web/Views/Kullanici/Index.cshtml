@@ -4,84 +4,95 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Kullanıcılar</h2>
+        <hr />
+    </div>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Ad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Soyad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KullaniciAdi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sifre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Aktif)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Admin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.KayitTarih)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DegistirmeTarihi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DegistirenKullanici)
-        </th>
-        <th></th>
-    </tr>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <p>
+            <a href="/Kullanici/Create" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>Yeni Kayıt</a>
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Ad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Soyad)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KullaniciAdi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sifre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Aktif)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Admin)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KayitTarih)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirmeTarihi)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DegistirenKullanici)
+                </th>
+                <th></th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Soyad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KullaniciAdi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sifre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Aktif)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Admin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.KayitTarih)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DegistirmeTarihi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DegistirenKullanici)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Ad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Soyad)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KullaniciAdi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sifre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Aktif)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Admin)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KayitTarih)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirmeTarihi)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DegistirenKullanici)
+                    </td>
+                    <td style="display:flex">
+                        @BootstrapHelper.Linkbuton("/Kullanici/Edit/" + item.Id, "warning", "btn-sm", "edit", "")
+                        @BootstrapHelper.Linkbuton("/Kullanici/Details/" + item.Id, "info", "btn-sm", "search", "")
+                        @BootstrapHelper.Linkbuton("/Kullanici/Delete/" + item.Id, "danger", "btn-sm", "trash", "")
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+
+    </div>
+</div>

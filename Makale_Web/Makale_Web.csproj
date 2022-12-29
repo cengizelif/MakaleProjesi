@@ -143,6 +143,9 @@
     <Compile Include="Controllers\KullaniciController.cs" />
     <Compile Include="Controllers\NotController.cs" />
     <Compile Include="Controllers\YorumController.cs" />
+    <Compile Include="Filters\Auth.cs" />
+    <Compile Include="Filters\AuthAdmincs.cs" />
+    <Compile Include="Filters\Exc.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -183,6 +186,8 @@
     <Content Include="Views\Not\Edit.cshtml" />
     <Content Include="Views\Not\Index.cshtml" />
     <Content Include="Views\Shared\_PartialPageYorumlar.cshtml" />
+    <Content Include="Views\Shared\_PartialPageNotDetay.cshtml" />
+    <Content Include="Views\Home\ErrorPage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
