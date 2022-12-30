@@ -4,95 +4,102 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Kullanici</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Ad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Soyad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Soyad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KullaniciAdi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KullaniciAdi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Sifre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Sifre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Aktif)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Aktif)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Admin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Admin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.KayitTarih)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.KayitTarih)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DegistirmeTarihi)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DegistirmeTarihi)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DegistirenKullanici)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DegistirenKullanici)
-        </dd>
-
-    </dl>
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h2>Kullanıcı Düzenle</h2>
+        <hr />
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Ad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Soyad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Soyad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KullaniciAdi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KullaniciAdi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Sifre)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Sifre)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Aktif)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Aktif)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Admin)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Admin)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.KayitTarih)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.KayitTarih)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DegistirmeTarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DegistirmeTarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DegistirenKullanici)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DegistirenKullanici)
+            </dd>
+
+        </dl>
+    </div>
+    <div class="col-md-10 col-md-offset-1">
+        <p>
+            <a href="/Kullanici/Edit/@Model.Id" class="btn btn-success"><span class="glyphicon glyphicon-edit"></span>Kaydet</a>
+            <a href="/Kullanici/Index" class="btn btn-warning">Listeye Dön</a>
+        </p>
+    </div>
+ </div>

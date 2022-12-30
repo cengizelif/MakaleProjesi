@@ -51,7 +51,7 @@ namespace Makale_BusinessLayer
   
         public BusinessLayerSonuc<Kullanici> Kaydet(KayitModel model)
         {
-            Kullanici k = new Kullanici();
+            Kullanici k = new Kullanici();          
             k.KullaniciAdi = model.KullaniciAdi;
             k.Email = model.Email;
 

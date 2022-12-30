@@ -11,11 +11,12 @@
         <hr />
     </div>
     <div class="row">
-        @using (Html.BeginForm("ProfilDegistir","Home",FormMethod.Post,new {enctype= "multipart/form-data" }))
+     
+        @using (Html.BeginForm("ProfilDegistir", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             <div class="col-md-3">
                 <img src="~/image/@Model.ProfilResim" class="img-circle" width="100" height="100" />
-                @Html.HiddenFor(model=>model.ProfilResim)
+                @Html.HiddenFor(model => model.ProfilResim)
                 <br />
                 <input type="file" name="profilresmi" id="profilresmi" class="form-control" />
             </div>
@@ -28,8 +29,8 @@
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </div>
                 </div>
-           
-                @Html.HiddenFor(model=>model.Id)
+
+                @Html.HiddenFor(model => model.Id)
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.Ad, new { @class = "control-label col-md-2" })
@@ -62,15 +63,15 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.Sifre, new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.Sifre, new { @class = "form-control" ,type="password" })
+                        @Html.EditorFor(model => model.Sifre, new { @class = "form-control", type = "password" })
                     </div>
                 </div>
 
                 <div class="form-group">
-                  <input type="submit" value="Kaydet" class="btn btn-success"/>
-                    @Html.ActionLink("İptal","ProfilGoster","Home",new {@class="btn btn-default"})
-                    </div>
-            
+                    <input type="submit" value="Kaydet" class="btn btn-success" />
+                    @Html.ActionLink("İptal", "ProfilGoster", "Home", new { @class = "btn btn-default" })
+                </div>
+
 
             </div>
         }
